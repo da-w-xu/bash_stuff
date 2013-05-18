@@ -1,3 +1,14 @@
+#tmux
+alias tml="tmux list-sessions"
+alias tma="tmux attach-session -t"
+
+#source search
+alias ss="find . | egrep \"(\.h|.cpp)\" | xargs grep"
+alias ssi="find . | egrep \"(\.h|.cpp)\" | xargs grep -i"
+
+#file search
+alias fs="find . | grep -i"
+
 alias scl='echo we are $STY; screen -ls'
 alias ll='ls -lh -G --color=auto'
 alias ls='ls -G --color=auto'
@@ -8,14 +19,9 @@ if [ -f ~/.dxu_aliases ]; then
     . ~/.dxu_aliases
 fi
 
-export PATH=$PATH:/home/dxu/usr/bin:/sbin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/dxu/usr/lib
+export PATH=$PATH:~/usr/bin:/sbin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/usr/lib
 
-#syntax highlighting on less
-alias less="~/vim/macros/less.sh"
-
-export P4CLIENT=dxu.wimpy
-export P4PASSWD=ChangeMe
 
 export HISTCONTROL=ignoredups:ignorespace
 export HISTSIZE=10000000
