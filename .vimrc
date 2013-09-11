@@ -1,3 +1,9 @@
+" Use vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+set shortmess=a
+set cmdheight=2
 set term=xterm
 set path=.,**,,
 
@@ -10,7 +16,7 @@ set mouse=a
 
 " ctags
 set tags=./tags;/
-au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
+"au BufWritePost *.c,*.cpp,*.h silent! !ctags -R --languages=C++,C,Sh,Python,Awk,Java
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -34,7 +40,7 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
-" call AutoHighlightToggle()
+"call AutoHighlightToggle()
 
 " 80 char column
 " set cc=80
@@ -49,9 +55,6 @@ endfunction
 "    call winrestview(l:winview)
 "endfunction 
 
-" Use vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
 " source ~/.vimrc.before if it exists.
@@ -74,7 +77,7 @@ set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
+"set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 
@@ -154,3 +157,7 @@ set wildignore+=*.png,*.jpg,*.gif
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
