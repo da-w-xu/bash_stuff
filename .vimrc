@@ -1,6 +1,19 @@
-" Use vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" alternatively, pass a path where Vundle should install plugins
+"let path = '~/some/path/here'
+"call vundle#rc(path)
+
+" let Vundle manage Vundle, required
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
+filetype plugin indent on    " required
 
 set shortmess=a
 set cmdheight=2
@@ -9,6 +22,9 @@ set path=.,**,,
 
 " click
 set mouse=a
+if has('mouse_sgr')
+    set ttymouse=sgr
+endif
 
 " whitespace
 :set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
@@ -18,7 +34,7 @@ set mouse=a
 set tags=./tags;/
 "au BufWritePost *.c,*.cpp,*.h silent! !ctags -R --languages=C++,C,Sh,Python,Awk,Java
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-l> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " autohighlight
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
@@ -161,3 +177,8 @@ set sidescroll=1
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
+
+
+
+" cltrp
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
